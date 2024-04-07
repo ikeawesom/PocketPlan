@@ -1,5 +1,6 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
+import FlexContainer from "./FlexContainer";
 
 export default function FormInputContainer(config: {
   text: string;
@@ -11,9 +12,9 @@ export default function FormInputContainer(config: {
   const { id, text, children, labelClassName, parentClassName } = config;
 
   return (
-    <div
+    <FlexContainer
       className={twMerge(
-        "flex flex-col w-full items-start justify-start gap-1",
+        "w-full items-start justify-start gap-1",
         parentClassName
       )}
     >
@@ -24,6 +25,6 @@ export default function FormInputContainer(config: {
         {text}
       </label>
       {children}
-    </div>
+    </FlexContainer>
   );
 }
