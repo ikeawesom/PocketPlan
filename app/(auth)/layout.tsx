@@ -17,7 +17,7 @@ export default async function DashboardLayout({
   if (data?.user) redirect("/dashboard/home");
 
   return (
-    <div className="h-svh w-full grid place-items-center p-4 bg-custom-black">
+    <div className="min-h-svh w-full grid place-items-center p-4 bg-custom-black">
       {children}
     </div>
   );
