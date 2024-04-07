@@ -9,3 +9,7 @@
   box-sizing: border-box;
   font-family: "Ubuntu", sans-serif;
 }
+
+input {
+  @apply px-3 py-2 rounded-md w-full;
+}
