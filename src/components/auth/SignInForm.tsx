@@ -5,6 +5,7 @@ import Link from "next/link";
 import { toast } from "sonner";
 import { AuthMemberType } from "@/src/constants";
 import PrimaryButton from "../utils/PrimaryButton";
+import { handleLogin } from "./handleAccount";
 
 export default function LoginForm() {
   const [details, setDetails] = useState({
@@ -23,6 +24,7 @@ export default function LoginForm() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setLoading(true);
+
     const loginDetails = {
       email: details.email,
       password: details.password,
@@ -30,6 +32,8 @@ export default function LoginForm() {
 
     try {
       // handle login
+      const { status, error } = await handleLogin(loginDetails);
+      if (!status) throw new Error(error.message);
     } catch (err: any) {
       toast.error(err.message);
     }
@@ -70,7 +74,7 @@ export default function LoginForm() {
       </FormInputContainer>
       <Link
         href="/auth/forgot-password"
-        className="text-sm text-custom-secondary underline hover:opacity-70"
+        className="text-sm text-custom-secondary underline hover:opacity-85"
       >
         Forgot Password
       </Link>
@@ -86,8 +90,8 @@ export default function LoginForm() {
         New here?{" "}
         <span>
           <Link
-            className="font-bold text-custom-secondary"
-            href="/auth/register"
+            className="underline text-custom-secondary hover:opacity-85"
+            href="/register"
           >
             Sign up
           </Link>
