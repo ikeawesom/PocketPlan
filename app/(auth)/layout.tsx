@@ -16,5 +16,9 @@ export default async function DashboardLayout({
   const { data } = await supabase.auth.getUser();
   if (data?.user) redirect("/dashboard/home");
 
-  return <>{children}</>;
+  return (
+    <div className="h-svh w-full grid place-items-center p-4 bg-custom-black">
+      {children}
+    </div>
+  );
 }
